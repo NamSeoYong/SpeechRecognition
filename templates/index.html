@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech Transcription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech Transcription</h1>
+    <form id="transcribeForm" onsubmit="submitForm(event)">
+        <label for="model_dir">Model Directory:</label>
+        <input type="text" id="model_dir" name="model_dir" required><br>
+        <label for="noise_file">Noise File:</label>
+        <input type="text" id="noise_file" name="noise_file" required><br>
+        <label for="denoise_file">Denoise File:</label>
+        <input type="text" id="denoise_file" name="denoise_file" required><br>
+        <input type="submit" value="Transcribe">
+    </form>
+
+    <div id="transcriptionResult" style="display: none;">
+        <h2>Transcription Result:</h2>
+        <p id="transcriptionText

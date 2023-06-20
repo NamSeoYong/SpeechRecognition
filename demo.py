@@ -67,19 +67,26 @@ def speech_to_text(model_dir, denoise_file, start):
     print("result :", transcription, "\n")
 
 def main(args):
+    print(f"model_dir : {args.model_dir}")
+    print(f"noise_file : {args.noise_file}.wav")
+    print(f"denoise_file : {args.denoise_file}.wav")
     start_time = time.time()
     denoise(args.model_dir, args.noise_file, args.denoise_file)
+    denoise_time = time.time()
+    print("finish denoise", denoise_time - start_time, "sec\n")
     keywordspotting(args.model_dir, args.denoise_file)
+    kws_time = time.time()
+    print("finish kws", kws_time - denoise_time, "sec\n")
     start = read_kws_result(args.model_dir, args.denoise_file)
     speech_to_text(args.model_dir, args.denoise_file, start)
     end = time.time()
-    print(end - start_time, "sec\n")
+    print(end - kws_time, "sec\n")
 
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--model_dir", type=str, required=True, help="Path to model_file")
-    parser.add_argument("--noise_file", type=str, required=True, help="Name of noisefile except .wav")
-    parser.add_argument("--denoise_file", type=str, required=True, help="Name of noisefile except .wav")
+    parser.add_argument("--noise_file", type=str, required=True, help="Name of noisefile except with .wav")
+    parser.add_argument("--denoise_file", type=str, required=True, help="Name of denoisefile except with .wav")
     
     args = parser.parse_args()
 
