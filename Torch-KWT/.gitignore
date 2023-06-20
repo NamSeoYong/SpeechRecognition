@@ -1,0 +1,8 @@
+# jupyter and python 
+**/.ipynb_checkpoints/
+**/__pycache__/
+
+wandb
+runs
+
+README.md

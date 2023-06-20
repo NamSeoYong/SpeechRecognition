@@ -9,7 +9,6 @@ espnet_asr/.cache
 backup/
 
 # model checkpoints
-models/
 
 # data
 share/
@@ -20,3 +19,5 @@ share/
 data/
 
 denoise_data/
+
+README.md
